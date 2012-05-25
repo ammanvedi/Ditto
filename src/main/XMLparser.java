@@ -1,5 +1,12 @@
 package main;
 
+/*
+	XML PARSER FOR THE API RETURN DATA
+
+	its purpose built for this file "screenshots.XML"
+	could have used a library but wanted to be a bit more thoughtful
+*/
+
 import java.io.File;
 import java.io.IOException;
 
@@ -7,6 +14,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+//these are standard libraries
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
