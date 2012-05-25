@@ -34,22 +34,31 @@ public class upload {
 	
 	public upload(int initx, int inity, int w, int h) throws IOException{
 		
-		
+		// rectangle object created from the user maouse drag
 		caparea = new Rectangle(initx, inity, w, h);
 		
+		//create a new ROBOT
+			//Robot is the object that will get the screen image.
 		try {
 			xbot  = new Robot();
 		} catch (AWTException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
+		
+		//read the screen capture into a buffered image object
 		xbuf = xbot.createScreenCapture(caparea);
 
 		
 		// Creates Byte Array from picture
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ImageIO.write(xbuf, "png", baos);
+		
+		//--------- IMGUR API INTERACTION------------------//
+		//explanations and examples available from 
+		//http://api.imgur.com/
+		
+		
 		URL url = new URL("http://api.imgur.com/2/upload");
 
 		//encodes picture with Base64 and inserts api key
@@ -69,9 +78,13 @@ public class upload {
 	    
 	    while ((line = rd.readLine()) != null) {
 	    	line = rd.readLine();
+	    	
+	    	//this line dumps the XML data/string into a variable "XMLDATA" 
 	    	XMLDATA = line;
 	        
 	    }
+	    
+	    //outputting xml to a file for reading later
 	    
 	    try {
 	    	            FileWriter outFile = new FileWriter( "SCREENSHOT.xml");
